@@ -1,42 +1,50 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			planets: [],
+			people: [],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			loadPeople: async () => {
+				const url = "https://swapi.dev/api/people/";
+				let response = await fetch(url);
+				const data = await response.json();
+				setStore({ people: data.results });
 			},
-			changeColor: (index, color) => {
-				//get the store
+			loadPlanets: async () => {
+				const url = "https://swapi.dev/api/planets/";
+				let response = await fetch(url);
+				const data = await response.json();
+				setStore({ planets: data.results });
+			},
+			addFavorite: name => {
+				let count = 0;
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+				store.favorites.map(each => {
+					if (each.name == name) {
+						count = 1;
+					}
 				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				if (count == 0) {
+					setStore({
+						favorites: [
+							...store.favorites,
+							{
+								name: name
+							}
+						]
+					});
+				}
+			},
+			removeFavorite: id => {
+				const store = getStore();
+				const newFavorites = store.favorites.filter((item, i) => i !== id);
+				setStore({ favorites: newFavorites });
 			}
 		}
 	};

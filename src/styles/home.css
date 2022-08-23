@@ -1,0 +1,36 @@
+/* body {
+    background-image: url("https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-18.jpg");
+} */
+body {
+    background-image: url("https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-18.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+
+.category-title-people {
+    color: red;
+    background: black;
+    max-width: 150px;
+    max-height: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: fantasy;
+  
+}
+
+
+.category-title-planets {
+    color: red;
+    background: black;
+    max-width: 150px;
+    max-height: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: fantasy;
+}
+
+.footer{
+    color: white;
+}

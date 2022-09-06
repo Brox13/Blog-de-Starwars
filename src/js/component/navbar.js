@@ -17,13 +17,11 @@ export const Navbar = () => {
         ></img>
       </Link>
 
-      <div className="col-6 col-lg-3">
-        <div className="d-inline nav-item dropdown">
+      <div className="container-fluid col-sm-12 col-md-4 col-lg-3 overflow-x">
+        <div className="d-inline nav-item ">
           <button
-            className="btn btn-primary dropdown-toggle"
+            className="btn btn-primary "
             type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
